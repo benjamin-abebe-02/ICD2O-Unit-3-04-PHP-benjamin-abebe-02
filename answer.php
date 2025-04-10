@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- ICS2O-Unit1-08-HTML-MDL -->
-<html lang="en-ca">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -16,12 +15,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
   <link rel="manifest" href="./site.webmanifest" />
   <title>Converting fahrenheit to celsius, With PHP</title>
-
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
 <body>
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <script src="./js/script.js"></script>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
@@ -33,33 +30,17 @@
         <img src="./temperature.png" alt="temperature" />
       </div>
       <div class="page-content">
-        <p>Fill in the blanks with the appropriate information!</p>
-        <p>Formula</p>
-        <p>(32°F − 32) × 5/9 = 0°C</p>
-      </div>
-      <br />
-      <!-- Simple Textfield for integers-->
-      <form method="get" action="answer.php">
-        <div class="page-content">
-          <div class="mdl-textfield mdl-js-textfield">
-            <!-- input pattern attribute -->
-            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="fahrenheit-input" name="T"/>
-            <!-- mdl-textfield__label -->
-            <label class="mdl-textfield__label" for="demo-input">Temperature in fahrenheit</label>
-            <!-- class "mdl-textfield__error" -->
-            <span class="mdl-textfield__error">Input is not a number</span>
-          </div>
-          <br />
-
-          <!-- Accent-colored raised button with ripple -->
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick="myButtonClicked()" type="submit">
-            Convert to celcius
-          </button>
-      </form>
-      <br />
-      <div class="page-content-answer">
-        <div id="answer"></div>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+          $T = ($_GET["T"]) ? $_GET["T"] : 0;
+          $celsius = ($T - 32) * 5 / 9;
+          $celsius = round($celsius, 2);
+          echo "<h3>If the temperature in Fahrenheit is $T, then the temperature in Celsius will be: " . round($celsius, 2) . "°C</h3>";
+        }
+        ?>
+        <a href="index.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          Return
+        </a>
       </div>
     </main>
   </div>
