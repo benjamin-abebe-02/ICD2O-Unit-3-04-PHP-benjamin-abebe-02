@@ -5,7 +5,6 @@
 
 ---
 
-**NOTES ON PHP:**
 - to test out your PHP files run the following command in the terminal:
 ```console
   php -S 0.0.0.0:8000

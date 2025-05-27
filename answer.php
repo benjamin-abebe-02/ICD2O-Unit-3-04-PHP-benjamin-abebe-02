@@ -31,12 +31,10 @@
       </div>
       <div class="page-content">
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
           $T = ($_GET["T"]) ? $_GET["T"] : 0;
           $celsius = ($T - 32) * 5 / 9;
           $celsius = round($celsius, 2);
           echo "<h3>If the temperature in Fahrenheit is $T, then the temperature in Celsius will be: " . round($celsius, 2) . "°C</h3>";
-        }
         ?>
         <a href="index.php" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
           Return
